@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-//import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCharactersAction } from '../actions/characterActions';
 import { getCharacters, getCharactersLoading } from '../selectors/characterSelectors';
