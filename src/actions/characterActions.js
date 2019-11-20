@@ -4,12 +4,12 @@ export const FETCH_CHARACTERS_LOADING = 'FETCH_CHARACTERS_LOADING';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const FETCH_CHARACTERS_DONE = 'FETCH_CHARACTERS_DONE';
 
-export const fetchCharacters = () => dispatch => {
+export const fetchCharactersAction = (num, page) => dispatch => {
   dispatch({
     type: FETCH_CHARACTERS_LOADING
   });
 
-  getCharacters()
+  getCharacters(num, page)
     .then(cards => {
       dispatch({
         type: FETCH_CHARACTERS,

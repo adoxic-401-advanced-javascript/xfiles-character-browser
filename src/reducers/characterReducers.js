@@ -2,7 +2,7 @@ import { FETCH_CHARACTER, FETCH_CHARACTERS, FETCH_CHARACTERS_DONE, FETCH_CHARACT
 
 const initialState = {
   characters: [],
-  loading: ''
+  loading: true
 };
 
 export default function reducer(state = initialState, action) {

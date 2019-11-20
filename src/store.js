@@ -1,5 +1,5 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import reducer from './reducers/saveMarkdownReducer';
+import reducer from './reducers/characterReducers';
 import thunk from 'redux-thunk';
 
 const store = createStore(
