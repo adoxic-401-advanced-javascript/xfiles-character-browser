@@ -1,12 +1,11 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import reducer from './reducers/characterReducers';
-import thunk from 'redux-thunk';
+import { promiseMiddleware } from 'promise-middleware-redux';
 
 const store = createStore(
   reducer,
   compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(promiseMiddleware)
   )
 );
 

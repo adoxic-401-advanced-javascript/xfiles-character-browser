@@ -4,23 +4,12 @@ export const FETCH_CHARACTERS_LOADING = 'FETCH_CHARACTERS_LOADING';
 export const FETCH_CHARACTERS = 'FETCH_CHARACTERS';
 export const FETCH_CHARACTERS_DONE = 'FETCH_CHARACTERS_DONE';
 
-export const fetchCharactersAction = (num, page) => dispatch => {
-  dispatch({
-    type: FETCH_CHARACTERS_LOADING
-  });
-
-  getCharacters(num, page)
-    .then(cards => {
-      dispatch({
-        type: FETCH_CHARACTERS,
-        payload: cards
-      });
-
-      dispatch({
-        type: FETCH_CHARACTERS_DONE
-      });
-    });
-};
+export const fetchCharactersAction = (num, page) => ({
+  type: FETCH_CHARACTERS,
+  payload: getCharacters(num, page),
+  pendingType: FETCH_CHARACTERS_LOADING,
+  fulfilledType: FETCH_CHARACTERS_DONE
+});
 
 export const FETCH_CHARACTER_LOADING = 'FETCH_CHARACTER_LOADING';
 export const FETCH_CHARACTER = 'FETCH_CHARACTER';

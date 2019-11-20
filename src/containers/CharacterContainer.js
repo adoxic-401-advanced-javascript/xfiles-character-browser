@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+//import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchCharactersAction } from '../actions/characterActions';
 import { getCharacters, getCharactersLoading } from '../selectors/characterSelectors';
 import Characters from '../components/Characters';
 
 
-const CharacterContainer = ({ characters, loading, fetchCharacters }) => {
+const CharacterContainer = () => {
+  const dispatch = useDispatch();
+  const characters = useSelector(state => getCharacters(state));
+  const loading = useSelector(state => getCharactersLoading(state));
+
   useEffect(() => {
-    fetchCharacters(4, 1);
+    dispatch(
+      fetchCharactersAction(4, 1)
+    );
   }, []);
 
   if(loading) return <img src={'https://media2.giphy.com/media/QFNpEeQABcMEw/giphy.gif'} />;
@@ -18,26 +24,5 @@ const CharacterContainer = ({ characters, loading, fetchCharacters }) => {
   );
 };
 
-CharacterContainer.propTypes = {
-  characters: PropTypes.array,
-  loading: PropTypes.bool,
-  fetchCharacters: PropTypes.func
-};
 
-const mapStateToProps = state => ({
-  characters: getCharacters(state),
-  loading: getCharactersLoading(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchCharacters(num, page) {
-    dispatch(fetchCharactersAction(num, page));
-  }
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CharacterContainer);
-
-
+export default CharacterContainer;

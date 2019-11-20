@@ -27,6 +27,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv-webpack": "^1.7.0",
+    "promise-middleware-redux": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
